@@ -1,0 +1,20 @@
+html, body {
+    background-color: rgb(29, 29, 29);
+    color: rgb(200,200,0);
+    padding: 10px 10px 10px 10px;
+}
+
+.css-img-style {
+    height: 400px;
+    width: 550px;
+}
+#id_content {
+   z-index: 9999;
+   position: absolute;
+}
+#id_result {
+    z-index: 9999;
+    position: absolute;
+    margin-top : 280px;
+    margin-left: 100px;
+}

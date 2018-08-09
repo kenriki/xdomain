@@ -1,0 +1,132 @@
+html, body {
+    background-color: rgb(37, 179, 96);
+    color: rgb(210, 210, 210);
+}
+.css-sparator  {
+    border-bottom:1px solid rgb(2, 2, 2);
+}
+.css-style-top {
+    margin-top: 10px;
+}
+.block-left {
+    padding-left: 10px;
+    float: left;
+}
+.css-li-bef ::before{
+    content: "〇 ";
+}
+
+pre code br {
+    display: none;
+}
+
+.css-menu-wrap {
+   position: fixed;
+   border : 1px solid rgb(29, 29, 29);
+   margin-top: 10px;
+   margin-left: 10px;
+   background-color: rgb(0, 119, 40);
+   padding: 25px 0px 50px 25px;
+   width: 300px;
+   height: auto;
+   float:left;
+   overflow: none;
+}
+.css-menu-wrap ul li{
+	display: inline-block;
+}
+.css-menu-wrap ul {
+   list-style: none;
+}
+.css-menu-wrap ul li {
+    width: 220px;
+    margin-left: -30px;
+    margin-top: 10px;
+    padding: 5px 3px 0px 20px;
+    border: solid 1px rgb(29, 29, 29);
+    background-color: rgb(62, 66, 63);
+}
+.css-menu-wrap ul li a, a {
+   color: rgb(0, 210, 210);
+   text-decoration: none;
+}
+.css-menu-wrap ul li:hover, a:hover{
+    background-color: rgb(19, 206, 81);
+    color: rgb(15, 15, 15);
+    text-decoration: underline;
+ }
+
+.css-content-wrap {
+   position: absolute;
+   border : 1px solid rgb(29, 29, 29);
+   margin-top: 10px;
+   margin-left: 350px;
+   background-color: rgb(0, 119, 40);
+   padding: 10px 0px 0px 25px;
+   width: 600px;
+   height: auto;
+   float:left;
+   overflow: none;
+}
+
+.css-content-wrap fieldset {
+    background-color: rgb(62, 66, 63);
+}
+
+h1 {
+    background-color: rgb(20, 200, 30);
+    padding: 5px 5px 5px 15px;
+    box-shadow: 2px 2px 1px 1px;
+    border-radius: 20px 20px 0px 0px;
+}
+
+.css-img-style {
+   height: 220px;
+}
+
+.css-width {
+    width: 90%;
+}
+
+.css-border-style {
+    border-color: rgb(29, 29, 29);
+}
+
+.css-brank-height {
+    margin-bottom: 20px;  
+}
+
+/* Submenu */
+ul li ul{
+	position: absolute;
+	top: 55px;
+	left: 0;
+}
+ul li{
+	display: block;
+}
+ul li a{
+	color: #444;
+}
+ul li a:hover{
+    background-color: #ddd;
+    color: #444;
+}
+
+/*dialog*/
+
+#dialog {
+    background-color: rgb(88, 88, 88);
+}
+
+#dialog a{
+    color: rgb(236, 235, 235);
+}
+
+/* コンテンツ twwiter */
+.css-content-right-wrap {
+    position: fixed;
+    padding: 10px 0px 0px 0px;
+    margin-left: 1000px;
+    width : 250px;
+}

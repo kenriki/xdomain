@@ -1,0 +1,35 @@
+html,
+body {
+    background-color: rgb(43, 230, 183);
+}
+
+h1 {
+    font-size: 250%;
+    color: rgb(182, 228, 55);
+    background-color: rgb(32, 11, 153);
+    padding: 15px;
+    width: 100%;
+}
+
+#id-style-disp {
+    margin-top: 30px;
+    visibility: hidden;
+}
+#id-img-top{
+    margin-top: 15px;
+}
+
+/* アナログ時計 */
+#base {
+    width: 150px;
+    height: 150px;
+    position: relative;
+}
+
+.clock {
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}

@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8">
+    <title>じゃんけん</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <style>
+        html,
+        body {
+            background-color: rgb(29, 29, 29);
+            color: rgb(200, 200, 200);
+        }
+
+        .css-style-01 {
+            margin-left: 20px;
+            margin-top: 30px;
+        }
+
+        .css-style-03 {
+            margin-left: 20px;
+            margin-top: 30px;
+            width: 150px;
+            overflow: hidden;
+        }
+
+        .css-style-copyright {
+            width: 500px;
+        }
+
+        .css-style-fieldset {
+            width: 300px;
+        }
+
+        .css-style-01 button {
+            width: 150px;
+            height: 80px;
+            background-color: rgb(112, 112, 112);
+            color: rgb(12, 40, 94);
+            font-weight: bolder;
+            box-shadow: 3px 2px 2px 1px;
+        }
+    </style>
+</head>
+
+<body>
+    <fieldset class="css-style-fieldset">
+        <legend>選択肢</legend>
+        <select id="ID_SELECT_NOW" class="css-style-03" size="3">
+            <option value="1">グー</option>
+            <option value="2">チョキ</option>
+            <option value="3">パー</option>
+        </select>
+    </fieldset>
+    <div class="css-style-01">
+        <button id="ID_BTN_STRAT" onclick="randomNumber();">Start</button>
+    </div>
+    <div class="css-style-01">
+        <button onclick="location.reload();">Load..</button>
+    </div>
+    <div class="css-style-01">
+        <button onclick="returnPage();">Top Return..</button>
+    </div>
+    <div class="css-style-01">
+        <div id="ID_RSULT"></div>
+    </div>
+    <hr>
+    <div class="css-style-copyright">
+        &copy; 2018 [AppName] Janken [Autor] Riki
+    </div>
+    <script>
+        // 厳格モード
+        "use strict";
+
+        // 結果用保持変数
+        var app = {
+            jankenHistoryCpuAiko: 0,
+            jankenHistoryCpuWin: 0,
+            jankenHistoryCpuLose: 0,
+        };
+        // 辞書メッセージ
+        var resource = {
+            msg00: "File loaded complite.",
+            msg01: "Draw...",
+            msg02: "You Lose !!",
+            msg03: "You Win !!",
+            msg04: "Is it really okay?"
+        };
+
+        window.onload = function () {
+            // 厳格モード
+            "use strict;"
+
+            document.getElementById("ID_BTN_STRAT").disabled = true;
+
+            document.getElementById("ID_SELECT_NOW").addEventListener("click", function (ev) {
+                document.getElementById("ID_BTN_STRAT").disabled = false;
+            }, false);
+        };
+
+        app.getRandomNumber = function (index) {
+            // 厳格モード
+            "use strict"
+
+            return Math.floor(Math.random() * index);
+        };
+        function randomNumber() {
+            // 厳格モード
+            "use strict"
+
+            if (!window.confirm(resource.msg04)) {
+                return;
+            }
+            
+            var num = document.getElementById("ID_SELECT_NOW").selectedIndex;
+            var user = parseInt(document.getElementById("ID_SELECT_NOW").options[num].value);
+            var cpu = app.getRandomNumber(3) + 1;
+
+            // CPU勝率チェック処理
+            // 作成中
+
+            // 勝敗判定
+            if (cpu === user) { alert(resource.msg01); app.jankenHistoryCpuAiko++; };
+            if (cpu > user) { alert(resource.msg02); app.jankenHistoryCpuWin++; };
+            if (cpu < user) { alert(resource.msg03); app.jankenHistoryCpuLose++; };
+
+            // じゃんけん結果
+            document.getElementById("ID_RSULT").innerHTML = "あいこ数: " + app.jankenHistoryCpuAiko + "<br>";
+            document.getElementById("ID_RSULT").innerHTML += "負け数: " + app.jankenHistoryCpuWin + "<br>";
+            document.getElementById("ID_RSULT").innerHTML += "勝ち数: " + app.jankenHistoryCpuLose;
+        }
+        function returnPage(){
+            if(window.confirm("前のページに戻ります。よろしいでしょうか？")){
+                history.back();
+            }
+        }
+    </script>
+</body>
+
+</html>

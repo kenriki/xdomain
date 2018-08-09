@@ -1,0 +1,54 @@
+html,
+body {
+    background-color: rgb(43, 230, 183);
+}
+
+h1 {
+    font-size: 250%;
+    color: rgb(182, 228, 55);
+    background-color: rgb(32, 11, 153);
+    padding: 15px;
+    width: 250%;
+}
+
+#id-wrap {
+    font-size: 35px;
+}
+
+#content {
+    width: 800px;
+}
+
+.css-style-button,
+#ID_TXT01,
+#ID_TXT02 {
+    font-size: 30px;
+    width: 550px;
+    height: 100px;
+}
+
+#id-style-disp {
+    margin-top: 30px;
+    display: none;
+}
+
+#id-img-top {
+    margin-top: 15px;
+    width: 250%;
+}
+
+/* アナログ時計 */
+
+#base {
+    width: 150px;
+    height: 150px;
+    position: relative;
+}
+
+.clock {
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}

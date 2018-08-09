@@ -1,0 +1,8 @@
+
+
+#####basicauth#####
+AuthUserFile "/home/kenriki/kenriki.php.xdomain.jp/htpasswd/chatApp/input/.htpasswd"
+AuthName "Member Site"
+AuthType BASIC
+require valid-user
+#####end:basicauth#####

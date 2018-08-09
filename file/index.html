@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title></title>
+  <link rel="stylesheet" type="text/css" href="style.css"> 
+  <script src="clickEvent.js"></script>
+  <script src="htmlTable.js"></script>
+  <script type ="defTable.js"></script>
+</head>
+<body>
+  <h1>ファイル作成システム</h1>
+  <h2>* IEで実施してください</h2>
+  <form name="form1" id="id_form1" action="">
+  <table style="float:left;">
+    <tr>
+    <td>
+    ファイル名： <input type="text" id="id_textBox0"  class="txt00" />
+    </td>
+    </tr>
+    <tr>
+    <td>
+    拡張子　　：
+    <SELECT id="id_textBox0A" class="txt00">
+	<OPTION value="txt" >TEXTファイル</OPTION>
+	<OPTION value="html"selected>HTMLファイル</OPTION>
+	<OPTION value="java">JAVAファイル</OPTION>
+	<OPTION value="c">Cファイル</OPTION>
+	<OPTION value="php">PHPファイル</OPTION>
+	<OPTION value="js">JavaScriptファイル</OPTION>
+	<OPTION value="jsp">JSPファイル</OPTION>
+	<OPTION value="sql">SQLファイル</OPTION>
+	<OPTION value="bat">バッチファイル</OPTION>
+	</SELECT>
+    </td>
+    </tr>
+    <tr>
+    <td>
+    <!--<textarea  data-widearea="enable" class="widearea" data-widearea-id="1"></textarea>-->
+    <textarea placeholder="Type something..." name="textBox1" rows="4" cols="40" id="id_textBox1" class="txt01"></textarea>
+	</td>
+	</tr>
+  </table>
+  <br />
+  <input type="button" value="エクスポート" id="download" class="btn01" onclick="onButtonClick();" />
+  <input type="reset" value="初期化" class="btn01" >
+  
+  <script type="text/javascript">
+  var x = document.forms.id_form1.id_textBox0A.value;
+  
+  if(x=="html"){
+  	htmlTable();
+  }else{
+  	defTable();
+  }
+  
+  </script>
+  
+  </form>
+  <hr/>
+  <p>エクスポート結果</p>
+  <div id="output"></div>
+
+</body>
+</html>

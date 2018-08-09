@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+<title>筋トレタイマー＆カウンター</title>
+<met charset="utf-8">
+<style>
+#result{
+  font-size: 200px;
+}
+
+.timer {
+  font-size: 50px;
+}
+
+#btn01 {
+  width: 300px;
+  height: 45px;
+}
+</style>
+</head>
+<body>
+<h1>筋トレタイマー＆カウンター</h1>
+<div class="timer">
+  <span id="hour"></span>: 
+  <span id="minu"></span>:
+  <span id="sec"></span>
+</div>
+<br>
+<button id="btn01" onclick="onPush();">カウント</button>
+<div id="result"></div>
+<script>
+var app = app || {};
+
+app = {
+  cnt: 0,
+  hour: 0,
+  minu: 0,
+  sec: 0
+};
+
+window.onload = function(){
+  setInterval (function(){
+    
+    if(app.sec === 60){
+        app.sec = 0;
+        app.minu ++;
+    }
+    if(app.minu === 60){
+        app.sec = 0;
+        app.minu = 0;
+        app.hour ++;
+    }
+    if(app.hour === 24){
+        app.sec = 0;
+        app.minu = 0;
+        app.hour = 0;
+        app.hour ++;
+    }
+
+    document.getElementById("hour").textContent = app.hour;
+    document.getElementById("minu").textContent = app.minu;
+    document.getElementById("sec").textContent = app.sec;
+ 
+    app.sec++;
+  }, 1000);
+};
+
+function onPush(){
+ 
+   if(isNaN(app.cnt)){
+      app.cnt = 0;
+   }
+   app.cnt++;
+   document.getElementById("result").textContent = app.cnt;
+}
+
+
+</script>
+</body>
+</html>

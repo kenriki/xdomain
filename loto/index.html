@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    #ID_1::before {
+        content: "[1]"
+    }
+    #ID_2::before {
+        content: "[2]"
+    }
+    #ID_3::before {
+        content: "[3]"
+    }
+    #ID_4::before {
+        content: "[4]"
+    }
+    #ID_5::before {
+        content: "[5]"
+    }
+    #ID_6::before {
+        content: "[6]"
+    }
+    #ID_7::before {
+        content: "[ボーナス]"
+    }
+    </style>
+    <!-- Bootstrapを組み込むのに必要なファイル -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+</head>
+
+<body onload="app.init();">
+
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+<!-- navbar-inverse で黒系ナビゲーションの指定をしています。-->
+<!-- navbar-fixed-top でヘッダー固定の指定をしています。-->
+<div class="container">
+<div class="navbar-header">
+<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+<!--button~はウインドウのサイズが780px以下になった時に表示されます。-->
+<a class="navbar-brand" href="#">Loto
+ Test</a>
+</div>
+<div class="collapse navbar-collapse">
+<ul class="nav navbar-nav">
+<li class="active"><a href="../">ホーム</a></li>
+<li><a href="http://www.google.com/">Google</a></li>
+<li><a href="http://www.yahoo.com/">Yahoo</a></li>
+</div>
+<!--/.nav-collapse -->
+</div>
+</div>
+
+<div style="margin-top:55px">
+    <div id="ID_1"></div>
+    <div id="ID_2"></div>
+    <div id="ID_3"></div>
+    <div id="ID_4"></div>
+    <div id="ID_5"></div>
+    <div id="ID_6"></div>
+    <div id="ID_7"></div>
+    <!--<button onclick="app.timeStop();">停止</button>-->
+    <!--<button onclick="app.timeReStart();">再開</button>-->
+    
+
+<button type="button" class="btn btn-primary btn-lg btn-block" onclick="app.timeReset();">Go!!</button>
+
+</div>
+
+<br><br>
+<!--アコーディオンブロック-->
+<div class="panel-group" id="accordion">
+<!--アコーディオン要素-->
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+         　ロト6とは
+        </a>
+      </h4>
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse in">
+      <div class="panel-body">
+        1〜43の43個の数字の中から、異なる6個の数字を選ぶ「数字選択式宝くじ」です。<br> 当せん金（理論値）は、1等2億円、2等約1,000万円、3等30万円、4等6,800円、5等1,000円（原則固定）です。<br>キャリーオーバーが発生した場合、1等の当せん金は最高6億円です。 
+      </div>
+    </div>
+  </div>
+<!--/アコーディオン要素-->
+<!--アコーディオン要素-->
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+          抽選日は？
+        </a>
+      </h4>
+    </div>
+    <div id="collapseTwo" class="panel-collapse collapse">
+      <div class="panel-body">
+        ロト6当選番号は毎週月曜日と木曜日の週二回
+      </div>
+    </div>
+  </div>
+<!--/アコーディオン要素-->
+<!--アコーディオン要素-->
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+          1口いくら？
+        </a>
+      </h4>
+    </div>
+    <div id="collapseThree" class="panel-collapse collapse">
+      <div class="panel-body">
+        1口200円
+      </div>
+    </div>
+  </div>
+<!--/アコーディオン要素-->
+</div>
+<!--/アコーディオンブロック-->
+
+    <script>
+        "use strict";
+
+        var app = {
+            cnt: 0,
+            timer_id: null,
+            index: 1,
+            save: 0
+        };
+
+        app.init = function () {
+            "use strict";
+
+            app.cnt = 0;
+            this.timer_id = setInterval(function () {
+                "use strict";
+
+                var ran = Math.floor(Math.random() * 43) + 1;
+                if (app.cnt === ran) {
+                    app.index++;
+                }
+                if (app.cnt > 43) {
+                    app.cnt = Math.floor(Math.random() * 43) + 1;
+                }
+                if (app.cnt === 0) {
+                    app.cnt = Math.floor(Math.random() * 43) + 1;
+                }
+                
+                document.getElementById("ID_" + app.index).innerHTML = app.cnt;
+                
+                app.cnt++;
+
+            }, 0.12);
+            
+        };
+
+        app.timeStop = function () {
+            "use strict";
+
+            if (this.timer_id !== null) {
+                clearInterval(this.timer_id);
+                this.timer_id = null;
+            }
+        };
+        
+        app.timeReset = function() {
+            "use strict";
+            
+            location.reload();
+        };
+    </script>
+</body>
+
+</html>

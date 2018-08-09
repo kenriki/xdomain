@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="./css/style-css.css">
+    <script src="./common.js"></script>
+    <title>Trikecy Community Site</title>
+
+    <head>
+
+        <body>
+            <h1>Trikecy Community Site</h1>
+            <div>
+                <img id="id-img-top" src="top.jpg">
+            </div>
+
+            <div id="content">
+                <label>Let's go Login !! ＞＞ </label>
+                <a href="" id="id-click-here" onclick="app.clickHere();return false;">Click Here !</a>
+            </div>
+            <div id="id-style-disp">
+                <a href="./form.php" target="_blank">新規登録</a>
+                <form action="login.php" method="post" name="frm01">
+                    <label>UserName : </label>
+                    <input type="text" id="ID_TXT01" value="" name="text01_name">
+                    <label>PassWord: </label>
+                    <input type="password" id="ID_TXT02" value="" name="text02_pass">
+                    <input type="submit" onClick="app.btnClick();" value="Login" name="login">
+                </form>
+            </div>
+
+            <script>
+                app.btnClick = function () {
+                    if (document.getElementById("ID_TXT01").value === "") {
+                        if (document.getElementById("ID_TXT02").value === "") {
+                            app.checkDocument(1);
+                        }
+                    }
+                };
+                app.clickHere = function () {
+                    document.getElementById("id-style-disp").style.visibility = "visible";
+                    document.getElementById("id-click-here").innerHTML = "Click Thank you !! Please click Login button.";
+                };
+            </script>
+        </body>
+
+</html>
