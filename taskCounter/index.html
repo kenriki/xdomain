@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>タスクタイマーカウンター</title>
+  <link rel="stylesheet" type="text/css" href="./style.css">
+  <!-- Bootstrapを組み込むのに必要なファイル -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.8.3.js"></script>
+  <script src="./main.js"></script>
+</head>
+<body>
+
+    <div id="loader-bg">
+        <div id="loader">
+            <img src="http://icon-park.com/imagefiles/loading7_orange.gif" width="80" height="80" alt="Now Loading..." />
+            <p>Now Loading...</p>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                
+                <!-- 上部MENUバー -->
+                <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+                    <!-- navbar-inverse で黒系ナビゲーションの指定をしています。-->
+                    <!-- navbar-fixed-top でヘッダー固定の指定をしています。-->
+                    <div class="container">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+                            <!--button~はウインドウのサイズが780px以下になった時に表示されます。-->
+                            <a class="navbar-brand" href="#">役立つまとめ情報サイト</a>
+                        </div>
+                        <div class="collapse navbar-collapse">
+                            <ul class="nav navbar-nav">
+                                <li class="active"><a href="../">ホーム</a></li>
+                                <li><a href="http://www.google.com/" target="_blank">Google</a></li>
+                                <li><a href="http://www.yahoo.com/" target="_blank">Yahoo</a></li>
+                            </ul>
+                        </div>
+                        <!--/.nav-collapse -->
+                    </div>
+                </div>
+                <div id="wrap">
+                    <h1>タスクタイマーカウンター</h1>
+                    <form name="form1" class="form-group">
+                    <select class="form-control input-lg" name="selectId1" id="selectId">
+                        <option value="300000">5分</option>
+                        <option value="180000">3分</option>
+                        <option value="60000">1分</option>
+                        <option value="10000">10秒</option>
+                        <option value="5000">5秒</option>
+                        <option value="3000">3秒</option>
+                        <option value="1000">1秒</option>
+                        <option value="500">1秒より少し速い</option>
+                        <option value="100">1秒より速い</option>
+                        <option value="10">1秒よりだいぶ速い</option>
+                        </select>
+                        <br>
+                        <input type="button" class=" btn btn-primary btn-lg btn-block" id="btnStartId" onclick="btn01event();" value="開始">
+                        <input type="button" class=" btn btn-primary btn-lg btn-block" id="btnEndId" onclick="timeStop();" value="停止">
+                        <div class="col-sm-offset-2 col-sm-10">
+                        <div class="checkbox">
+                                <label>
+                                    <input type="radio" id="id_radio_1" onclick="myCheck();" checked name="radio1"> 音あり
+                                </label>
+                                <label>
+                                    <input type="radio" id="id_radio_2" onclick="myCheck();" name="radio1"> 音なし
+                                </label>
+                            </div>
+                        </div>
+                    </form>
+                    <label>
+                        ※リセットしたいときは、画面を再読み込みしてください。
+                        <input type="button" class=" btn btn-info btn-lg btn-block" value="このページを再読込します" onclick="window.location.reload();" />
+                    </label>  
+                    <br>
+                    <div id="res"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+    $(function() {
+        var h = $(window).height();
+
+        $('#wrap').css('display','none');
+        $('#loader-bg ,#loader').height(h).css('display','block');
+    });
+
+    $(window).load(function () { //全ての読み込みが完了したら実行
+        $('#loader-bg').delay(900).fadeOut(800);
+        $('#loader').delay(600).fadeOut(300);
+        $('#wrap').css('display', 'block');
+    });
+
+    //13秒たったら強制的にロード画面を非表示
+    $(function(){
+        setTimeout('stopload()',13000);
+    });
+
+    function stopload(){
+        $('#wrap').css('display','block');
+        $('#loader-bg').delay(900).fadeOut(800);
+        $('#loader').delay(600).fadeOut(300);
+    }
+    </script>
+</body>
+</html>

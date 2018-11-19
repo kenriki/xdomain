@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<title>Q&A情報共有サイト</title>
+<meta charset="utf-8">
+<style>
+.css-btn {
+  width: 400px;
+  height: 90px;
+  font-size: 25px;
+}
+input[type="file"] {
+  top:0;
+  left:0;
+  width: 100%;
+  height:100px;
+  opacity: 0;
+  /*position:absolute;*/
+}
+
+.css-list-memo {
+  margin-top: -380px;
+  margin-left: 500px;
+  position:absolute;
+}
+
+.usrBtn {
+  height: 70px;
+}
+
+#id-txtBox {
+  display: none;
+}
+
+#id-click {
+  width: 250px;
+  height: 25px;
+  color: #ccc;
+}
+
+#preview img{
+  width: 150px;
+}
+
+</style>
+<link rel="stylesheet" type="text/css" href="style.css"/>
+<!-- Bootstrapを組み込むのに必要なファイル -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div id="res"></div>
+<script>
+
+    (function(){
+    
+        $.get("test.php",
+          function(data){
+             $('#res').append( "Name: " + data.name+"<br>" )  // John
+                      .append( "Time: " + data.time ); //  2pm
+            },
+            "json"
+          );
+        
+    
+    })();
+
+</script>
+</body>
+</html>

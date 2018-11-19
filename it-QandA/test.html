@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+<head>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+  <h1>ƒeƒXƒg</h1>
+  <hr>
+  <div id="res"></div>
+  <script>
+  (function(){
+    $.get("./test.php", function(data){
+      document.getElementById("res").textContent = data[0].body.div[0].table.tr.td;
+    });
+  })();
+  </script>
+</body>
+</html>  

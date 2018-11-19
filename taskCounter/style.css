@@ -1,0 +1,69 @@
+
+html,body{
+  background-image: url(https://st3.depositphotos.com/9874610/17500/v/1600/depositphotos_175006954-stock-illustration-time-vector-seamless-background-endless.jpg);
+}
+
+h1{
+  padding: 12px 12px 12px 12px;
+  background-color: rgb(155,160,160);
+  opacity: 0.92;
+  font-size: 25px !important;
+}
+
+#wrap {
+  margin-top: 80px;
+}
+
+label{
+  padding: 12px 12px 12px 12px;
+  background-color: rgb(255,255,255);
+  opacity: 0.92;
+  font-size: 20px;
+}
+
+#res{
+  font-size: 20px;
+  padding: 25px 25px 25px 25px;
+  width: 95%;
+  height: 150px; 
+  background-color: rgb(155,160,160);
+  opacity: 0.92;
+}
+
+#selectId{
+  width: 150%;
+  height : 145%;
+  opacity: 0.92;
+}
+
+select {
+max-width: 100% !important;
+}
+
+#btnStartId, btnEndId{
+  opacity: 0.92;
+}
+
+#loader-bg {
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    background: #000;
+    z-index: 1;
+}
+#loader {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 200px;
+    height: 200px;
+    margin-top: -100px;
+    margin-left: -100px;
+    text-align: center;
+    color: #fff;
+    z-index: 2;
+}
