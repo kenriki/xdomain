@@ -1,0 +1,12 @@
+#demo {text-align:center;}
+.window {
+background-color:#f6f6f6;
+width:720px;
+height:380px;
+padding:40px;
+box-sizing:border-box;
+position:relative;
+margin:0 auto;
+margin-bottom:80px;
+text-align:center;
+}

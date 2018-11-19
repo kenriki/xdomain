@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+  <style>
+  html,body {
+  background : rgb(20,155,20);
+  color : rgb(200,200,200);
+  }
+  </style>
+</head>
+
+<body>
+  <div id="target">
+    <h1>メモ</h1>
+    <input type="text " id="textId01" value="" placeholder="Please input text " size="45">
+    <hr>
+    <input type="text " id="textId02" value="" placeholder="Please input text " size="45">
+    <hr>
+    <input type="text " id="textId03" value="" placeholder="Please input text " size="45">
+    <hr>
+    <input type="text " id="textId04" value="" placeholder="Please input text " size="45">
+    <hr>
+    <input type="text " id="textId05" value="" placeholder="Please input text " size="45">
+    <hr>
+    <input type="text " id="textId06" value="" placeholder="Please input text " size="45">
+
+    <br>
+    <br>
+    <input type="button" onclick="okEvent();" value="確定（画像確認できたら下記のダウンロードボタンを押す）">
+  </div>
+
+  <h3>↓↓ここから画像↓↓　（上の対象範囲を画像化）
+    <h3>
+      <img src="" id="result" />
+      <h3>↑↑ここまで画像↑↑</h3>
+
+
+
+      <a href="" id="ss" download="メモ.png" onclick="download();">メモ画面をダウンロード</a>
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
+      <script>
+        var app = {
+          imgData: ""
+        };
+        function download() {
+
+          //ボタンを押下した際にダウンロードする画像を作る
+          html2canvas(document.getElementById("target"), {
+            onrendered: function (canvas) {
+
+              //aタグのhrefにキャプチャ画像のURLを設定
+              //app.imgData = canvas.toDataURL();
+              imagesLook();
+              
+
+            }
+          });
+
+        };
+
+        function okEvent() {
+          imagesLook();
+        }
+
+        function imagesLook() {
+          //HTML内に画像を表示
+          html2canvas(document.getElementById("target"), {
+            onrendered: function (canvas) {
+              //imgタグのsrcの中に、html2canvasがレンダリングした画像を指定する。
+              app.imgData = canvas.toDataURL();
+              document.getElementById("result").src = app.imgData;
+              document.getElementById("ss").href = app.imgData;
+            }
+          });
+
+        }
+      </script>
+</body>
+
+</html>

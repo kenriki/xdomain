@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes"><meta name="format-detection" content="telephone=no">
+<title>メモ　</title>
+<meta name="description" content="">
+<meta name="keywords" content="ポケモン,ぽけもん,ポケットモンスター,ピカチュウ,ぴかちゅう,Ｘ,Ｙ,エックス,ワイ">
+<!--local css-->
+<style type="text/css">
+
+.circle{
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: red ;
+}
+
+.semicircle {
+    position: absolute;
+    top: -100px;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: linear-gradient(#d9242c 50%, transparent 50%);
+    text-align: center;
+    line-height: 70px;
+    z-index: 0;
+    left: 50%;
+    margin-left: -90px;
+}
+</style>
+
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"></scipt>
+</head>
+<body id="page-top">
+
+
+<div class="semicircle-wrap">
+<div class="semicircle">
+ 
+</div>
+</div>
+ 
+<div class="circle"></div>
+
+<script>
+$(function () {
+ $("#circle").hide();
+$(window).scroll(function () {
+if ($(this).scrollTop() > 450) {
+  $("#circle").show();
+} else {
+  $("#circle").hide();
+}
+});
+});
+
+</script>
+
+</body>
+</html>

@@ -147,6 +147,7 @@ function screen_disp(){
                       </div>
                       </form>
                   </div>
+                  <a href="./search/index.php" target="_blank">ポケモン検索ページへ</a>
                   <hr>
 
                   <?php
