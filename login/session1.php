@@ -1,12 +1,14 @@
 <?php
+header('Content-Type: text/html; charset=UTF-8');
+
 session_start();
 $_SESSION["loginname"] = $_POST["username"];
 $_SESSION["pass"] = $_POST["pass"];
 
-$db['host'] = "localhost";  // DBサーバのURL
+$db['host'] = "sv1.php.xdomain.ne.jp";  // DBサーバのURL
 $db['user'] = $_SESSION["loginname"];  // ユーザー名
 $db['pass'] = $_SESSION["pass"];  // ユーザー名のパスワード
-$db['dbname'] = "testdb";  // データベース名
+$db['dbname'] = "kenriki_sample";  // データベース名
 
 
 // エラーメッセージの初期化
@@ -42,14 +44,15 @@ if (isset($_POST["login"])) {
                     session_regenerate_id(true);
 
                     // 入力したIDのユーザー名を取得
-                    $id = $row['id'];
-                    $sql = "SELECT * FROM userData WHERE id = $id";  //入力したIDからユーザー名を取得
+                    $id = $row['name'];
+                    $sql = "SELECT * FROM login_info WHERE name = `$id`";  //入力したIDからユーザー名を取得
                     $stmt = $pdo->query($sql);
                     foreach ($stmt as $row) {
-                        $row['name'];  // ユーザー名
+                        $name = $row['name'];  // ユーザー名
+                        $pass = $row['password']; 
                     }
                     $_SESSION["NAME"] = $row['name'];
-                    header("Location: Main.php");  // メイン画面へ遷移
+                    header("Location: index.php");  // メイン画面へ遷移
                     exit();  // 処理終了
                 } else {
                     // 認証失敗
@@ -70,10 +73,10 @@ if (isset($_POST["login"])) {
 }
 
 
-if($_SESSION["loginname"] != "1234" || $_SESSION["pass"] != "pass"){
+if($_SESSION["loginname"] != $name || $_SESSION["pass"] != $pass){
     ?>
     ログインに失敗しました。<br />
-    <a href="login.html">セッション生成ページ</a>
+    <a href="index.php">前のぺーじへ</a>
     <?php
     exit;
 }

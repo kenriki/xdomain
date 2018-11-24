@@ -1,3 +1,26 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>サンプル</title>
+<style>
+html,body {
+  background-color: rgb(199,199,199);
+}
+table {
+  border-collapse:collapse;
+  border-bottom: 1px #000 soild;
+}
+h1{
+    background-color: rgb(50,80,80);
+    padding: 20px 20px 20px 20px;
+    color: rgb(230,230,200);
+}
+</style>
+</head>
+<body>
+<h1>Smarty 練習用</h1>
+<hr>
 <?php
 
 date_default_timezone_set('Asia/Tokyo');
@@ -7,9 +30,9 @@ ini_set( 'display_errors', 1 );
 
 // Smartyインストールディレクトリを定数定義
 // ローカル環境ディレクトリ
-// define( 'SMARTY_DIR', 'c:/xampp/htdocs/smarty_sample/libs/' );
+define( 'SMARTY_DIR', 'c:/xampp/htdocs/smarty_sample/libs/' );
 // 本番環境ディレクトリ
-define( 'SMARTY_DIR', './libs/' );
+//define( 'SMARTY_DIR', './libs/' );
 // echo SMARTY_DIR;
 
 // Smartyを使うための準備
@@ -56,6 +79,11 @@ $member_data = array(
              );
 $smarty->assign('personaldata', $member_data);
 
+// データ取得してHTMLに挿入
 $smarty->display('displayMain.tpl');
 
 ?>
+<hr>
+<a href="../index.html">TOP</a>
+</body>
+</html>
