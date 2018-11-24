@@ -46,8 +46,17 @@
                             <li>
                                 <img src="./sample-05.png" alt="" />
                             </li>
-　　　　                     <li>
+                            <li>
                                 <img src="./sample-06.png" alt="" />
+                            </li>
+                            <li>
+                                <img src="./sample-07.png" alt="" />
+                            </li>
+                            <li>
+                                <img src="./sample-08.png" alt="" />
+                            </li>
+                            <li>
+                                <img src="./sample-09.png" alt="" />
                             </li>
                         </ul>
                     </div>
@@ -76,6 +85,18 @@
 
         </footer>
         </div>
+        
+        <script type="text/javascript">
+        var maxWidth = 500;
+        window.onload = function(){
+          var elements = document.getElementsByTagName("img");
+          for(i=0;i<elements.length;i++){
+            if(elements[i].width > maxWidth){
+              elements[i].width = maxWidth;
+            }
+          }
+        }
+        </script>
 
 </body>
 

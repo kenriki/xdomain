@@ -7,4 +7,8 @@
     &nbsp;&nbsp;&nbsp;&nbsp;/topのindex.html  
     &nbsp;&nbsp;&nbsp;&nbsp;/login/index.php
     <hr>
-    
+## 2018/11/23/Sat  
+1. H2 Database Engine (以降H2DBと記載します)  
+    [H2DBサイト](http://www.h2database.com/html/main.html)  
+2. ライブラリ系はlibディレクトリへ移動  
+
