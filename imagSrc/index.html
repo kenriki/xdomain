@@ -27,42 +27,68 @@
             <div id="demo">
                 <h1>ピクチャーライブラリー</h1>
 
-                <div class="window">
-
-                    <div class="flexslider">
-                        <ul class="slides">
-                            <li>
-                                <img src="./sample-01.png" alt=""/>
-                            </li>
-                            <li>
-                                <img src="./sample-02.png" alt="" />
-                            </li>
-                            <li>
-                                <img src="./sample-03.png" alt="" />
-                            </li>
-                            <li>
-                                <img src="./sample-04.png" alt="" />
-                            </li>
-                            <li>
-                                <img src="./sample-05.png" alt="" />
-                            </li>
-                            <li>
-                                <img src="./sample-06.png" alt="" />
-                            </li>
-                            <li>
-                                <img src="./sample-07.png" alt="" />
-                            </li>
-                            <li>
-                                <img src="./sample-08.png" alt="" />
-                            </li>
-                            <li>
-                                <img src="./sample-09.png" alt="" />
-                            </li>
-                        </ul>
+                <div id="loader-bg">
+                    <div id="loader">
+                        <img src="http://icon-park.com/imagefiles/loading7_orange.gif" width="500" height="80" alt="Now Loading..." />
+                        <p>Now Loading...</p>
                     </div>
-
                 </div>
+                
+                <div id="wrap">
+                    <div class="window">
 
+                        <div class="flexslider">
+                            <ul class="slides">
+                                <li>
+                                    <img src="./img/sample-01.png" alt="" />
+                                </li>
+                                <li>
+                                    <img src="./img/sample-02.png" alt="" />
+                                </li>
+                                <li>
+                                    <img src="./img/sample-03.png" alt="" />
+                                </li>
+                                <li>
+                                    <img src="./img/sample-04.png" alt="" />
+                                </li>
+                                <li>
+                                    <img src="./img/sample-05.png" alt="" />
+                                </li>
+                                <li>
+                                    <img src="./img/sample-06.png" alt="" />
+                                </li>
+                                <li>
+                                    <img src="./img/sample-07.png" alt="" />
+                                </li>
+                                <li>
+                                    <img src="./img/sample-08.png" alt="" />
+                                </li>
+                                <li>
+                                    <img src="./img/sample-09.png" alt="" />
+                                </li>
+                                <li>
+                                    <img src="./img/sample-10.png" alt="" />
+                                </li>
+                                <li>
+                                    <img src="./img/sample-11.png" alt="" />
+                                </li>
+                                <li>
+                                    <img src="./img/sample-12.png" alt="" />
+                                </li>
+                                <li>
+                                    <img src="./img/sample-13.png" alt="" />
+                                </li>
+                                <li>
+                                    <img src="./img/sample-14.png" alt="" />
+                                </li>
+                                <li>
+                                    <img src="./img/sample-15.png" alt="" />
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
 
             </div>
 
@@ -84,19 +110,45 @@
 
 
         </footer>
-        </div>
-        
-        <script type="text/javascript">
+    </div>
+
+    <script type="text/javascript">
         var maxWidth = 500;
-        window.onload = function(){
-          var elements = document.getElementsByTagName("img");
-          for(i=0;i<elements.length;i++){
-            if(elements[i].width > maxWidth){
-              elements[i].width = maxWidth;
+        window.onload = function () {
+            var elements = document.getElementsByTagName("img");
+            for (i = 0; i < elements.length; i++) {
+                if (elements[i].width > maxWidth) {
+                    elements[i].width = maxWidth;
+                }
             }
-          }
         }
-        </script>
+    </script>
+
+    <script>
+        $(function () {
+            var h = $(window).height();
+
+            $('#wrap').css('display', 'none');
+            $('#loader-bg ,#loader').height(h).css('display', 'block');
+        });
+
+        $(window).load(function () { //全ての読み込みが完了したら実行
+            $('#loader-bg').delay(900).fadeOut(800);
+            $('#loader').delay(600).fadeOut(300);
+            $('#wrap').css('display', 'block');
+        });
+
+        //13秒たったら強制的にロード画面を非表示
+        $(function () {
+            setTimeout('stopload()', 13000);
+        });
+
+        function stopload() {
+            $('#wrap').css('display', 'block');
+            $('#loader-bg').delay(900).fadeOut(800);
+            $('#loader').delay(600).fadeOut(300);
+        }
+    </script>
 
 </body>
 

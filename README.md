@@ -11,4 +11,8 @@
 1. H2 Database Engine (以降H2DBと記載します)  
     [H2DBサイト](http://www.h2database.com/html/main.html)  
 2. ライブラリ系はlibディレクトリへ移動  
+    <hr>
+## 2018/11/25/Sun  
+1. ピクチャーページ修正
+2. ディレクトリ整理
 
