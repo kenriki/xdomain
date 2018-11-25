@@ -38,6 +38,10 @@ text-decoration:none;
 vertical-align:baseline;
 }
 
+.site {
+	background-image: url(https://2.bp.blogspot.com/-T5MY0mvl9Aw/UsZstBkZFoI/AAAAAAAAcpc/rnG_UJLfJIM/s600/renga_pattern.png);
+}
+
 html {font-size:62.5%; width:100%; height:100%;}
 
 body {
@@ -54,14 +58,14 @@ text-align:center;
 	-ms-text-size-adjust:100%;
 	-o-text-size-adjust:100%;
 	text-size-adjust:100%;
-width:100%;
-height:100%;
--webkit-font-smoothing:antialiased;
-/*-moz-font-smoothing:antialiased;
--ms-font-smoothing:antialiased;
--o-font-smoothing:antialiased;*/
-font-smoothing:antialiased;
-/* text-rendering:optimizeLegibility; まだ使わないほうが無難 */
+	width:100%;
+	height:100%;
+	-webkit-font-smoothing:antialiased;
+	/*-moz-font-smoothing:antialiased;
+	-ms-font-smoothing:antialiased;
+	-o-font-smoothing:antialiased;*/
+	font-smoothing:antialiased;
+	/* text-rendering:optimizeLegibility; まだ使わないほうが無難 */
 }
 
 article, aside, dialog, figure, footer, header, main, menu, nav, section {display:block;}
@@ -127,7 +131,7 @@ i,
 em,
 strong {color:#1aa;}
 
-#main img {max-width:100%; height:30px;}
+#main img {max-width:100%; height:500px;}
 
 
 .hide,
@@ -166,6 +170,10 @@ clear:both;
 
 /******************/
 
+h1 {
+	background: rgb(0,200,70);
+	width: 300px;
+}
 #header {width:100%; height:80px; position:fixed; top:0; left:0; color:#fff; padding:0; margin:0; padding:15px 0; z-index:99;}
 #header h1 {display:block; position:relative; width:90px; height:30px; overflow:hidden; z-index:99; margin:0 auto 20px auto;}
 #header h1 a {background-image:url(../images/logo-g.png); background-position:0 0; background-repeat:no-repeat;
