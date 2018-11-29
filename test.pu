@@ -1,0 +1,6 @@
+@startuml
+HTML -> "JS" : onload="app.init();"
+"JS" -> "PHP": GET
+"PHP" --> "JS"
+"JS" --> "HTML"
+@enduml
