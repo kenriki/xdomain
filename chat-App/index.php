@@ -42,6 +42,11 @@ input[type="file"] {
   width: 150px;
 }
 
+.flex{
+display: flex;
+flex-wrap: wrap;
+}
+
 </style>
 <link rel="stylesheet" type="text/css" href="style.css"/>
 <!-- Bootstrapを組み込むのに必要なファイル -->

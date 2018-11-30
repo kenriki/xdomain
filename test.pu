@@ -1,0 +1,9 @@
+@startuml
+HTML -> "JS" : onload="app.init();"
+"JS" -> "PHP": GET
+"PHP" --> "JS"
+"JS" --> "HTML"
+"HTML" -> "JS": onClick="app.clickEvent();"
+"JS" -> "JS": "dom生成"
+"JS" --> "HTML"
+@enduml

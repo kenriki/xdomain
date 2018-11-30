@@ -2,7 +2,11 @@
 .window {
 background-color:#f6f6f6;
 width:720px;
+<<<<<<< HEAD
 height:380px;
+=======
+height:580px;
+>>>>>>> xdomain
 padding:40px;
 box-sizing:border-box;
 position:relative;

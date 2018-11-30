@@ -2,7 +2,7 @@
 <html lang="ja">
 
 <head>
-    <title>トップ</title>
+    <title>役立つまとめ情報サイト トップ</title>
     <meta charset="utf-8">
     <style>
         .css-btn {
@@ -16,9 +16,28 @@
     </style>
     <!-- Bootstrapを組み込むのに必要なファイル -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="./lib/css/bootstrap.min.css">
+    <script src="./lib/js/jquery.min.js"></script>
+    <script src="./lib/js/bootstrap.min.js"></script>
+    <!-- カレンダー -->
+    <style>
+    /* 日曜日 */
+    .fc-sun {
+        color: red;
+        background-color: #fff0f0;
+    }
+      
+    /* 土曜日 */
+    .fc-sat {
+        color: blue;
+        background-color: #f0f0ff;
+    }
+    </style>
+    <link rel='stylesheet' href='./lib/fullcalendar/fullcalendar.css' />
+    <script src='./lib/fullcalendar/lib/jquery.min.js'></script>
+    <script src='./lib/fullcalendar/lib/moment.min.js'></script>
+    <script src='./lib/fullcalendar/fullcalendar.js'></script>
+    <script src='./lib/fullcalendar/locale/ja.js'></script>
 </head>
 
 <body class="css-wrap">
@@ -39,10 +58,22 @@
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="http://www.google.com/">Google</a>
+                        <a href="http://www.google.com/" target="_blank">Google</a>
                     </li>
                     <li>
-                        <a href="http://www.yahoo.com/">Yahoo</a>
+                        <a href="http://www.yahoo.com/" target="_blank">Yahoo</a>
+                    </li>
+                    <li>
+                        <a href="https://www.ap-siken.com/apkakomon.php" target="_blank">応用情報技術者試験過去問道場</a>
+                    </li>
+                    <li>
+                        <a href="http://spring.io/projects/spring-framework" target="_blank">spring mvc</a>
+                    </li>
+                    <li>
+                        <a href="https://junit.org/junit5/" target="_blank">junit</a>
+                    </li>
+                    <li>
+                        <a href="https://backlog.com/ja/git-tutorial/" target="_blank">Git基礎</a>
                     </li>
                 </ul>
             </div>
@@ -55,8 +86,29 @@
     <div class="container-fluid css-scro">
         <div class="row">
             <div class="col-md-4 col-sm-6 col-xs-12">
+                <div id="calendar"></div>
                 <h2>
                     <button type="button" class=" btn btn-info btn-lg btn-block" onclick="location.href='./doc/'">My Engineer Exhibition Wiki</button>
+                </h2>
+                <div class="col-sm-4"></div>
+                <h2>
+                    <button type="button" class=" btn btn-info btn-lg btn-block" onclick="location.href='./memo/'">めもダウンローダ</button>
+                </h2>
+<div class="col-sm-4"></div>
+                <h2>
+                    <button type="button" class=" btn btn-info btn-lg btn-block" onclick="location.href='./imagSrc/'">ピクチャー</button>
+                </h2>
+                <div class="col-sm-4"></div>
+                <h2>
+                    <button type="button" class=" btn btn-info btn-lg btn-block" onclick="location.href='./draw/'">手書きタップ</button>
+                </h2>
+                <div class="col-sm-4"></div>
+                <h2>
+                    <button type="button" class=" btn btn-info btn-lg btn-block" onclick="location.href='../kaup/'">カウプ指数計算機</button>
+                </h2>
+                <div class="col-sm-4"></div>
+                <h2>
+                    <button type="button" class=" btn btn-info btn-lg btn-block" onclick="location.href='./taskCounter/'">タスクタイマーカウンター</button>
                 </h2>
                 <div class="col-sm-4"></div>
                 <h2>
@@ -88,11 +140,20 @@
                 </h2>
                 <div class="col-sm-4"></div>
                 <h2>
-                    <button type="button" class=" btn btn-info btn-lg btn-block" onclick="location.href='//www.phppro.jp/school/smarty/'">Smarty作法について<br>[※ 参考にさせてもらってます]</button>
+                    <button type="button" class=" btn btn-info btn-lg btn-block" onclick="location.href='//kenriki.wp.xdomain.jp'">メモ用</button>
+                </h2>
+                <div class="col-sm-4"></div>
+                <h2>
+                    <button type="button" class=" btn btn-info btn-lg btn-block" onclick="location.href='//developer.mozilla.org/ja/docs/Web/JavaScript/Introduction_to_Object-Oriented_JavaScript'">Developer.mozilla.org</button>
                 </h2>
             </div>
         </div>
     </div>
+    <script>
+    $(function () {
+        $('#calendar').fullCalendar();
+    });
+    </script>
 </body>
 
 </html>

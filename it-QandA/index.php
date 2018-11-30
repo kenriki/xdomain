@@ -150,21 +150,21 @@ function screen_disp(){
                   <hr>
 
                   <?php
-                  $fileData = file_get_contents('data.html');
-                  $fileData = explode( "<hr>", $fileData );
-                  $array = array_map('trim', $fileData); // 各行にtrim()をかける
-                  $array = array_filter($array, 'strlen'); // 文字数が0の行を取り除く
-                  $fileData = array_values($array); // これはキーを連番に振りなおしてるだけ
+                      $fileData = file_get_contents('data.html');
+                      $fileData = explode( "<hr>", $fileData );
+                      $array = array_map('trim', $fileData); // 各行にtrim()をかける
+                      $array = array_filter($array, 'strlen'); // 文字数が0の行を取り除く
+                      $fileData = array_values($array); // これはキーを連番に振りなおしてるだけ
 
-                  $cnt = count( $fileData );
-                  //for( $i=0;$i<$cnt;$i++ ){
-                  for($i = $cnt-1; $i>=0; $i--) {
-                    echo("<div>".$fileData[$i]."</div><hr>");
-                  }
+                      $cnt = count( $fileData );
+                      //for( $i=0;$i<$cnt;$i++ ){
+                      for($i = $cnt-1; $i>=0; $i--) {
+                        echo("<div>".$fileData[$i]."</div><hr>");
+                      }
 
-                  echo ini_get('upload_max_filesize').'<br>';
-                    echo ini_get('post_max_size').'<br>';
-                    echo ini_get('memory_limit').'<br>';
+                      echo ini_get('upload_max_filesize').'<br>';
+                      echo ini_get('post_max_size').'<br>';
+                      echo ini_get('memory_limit').'<br>';
                   ?>
 
 
