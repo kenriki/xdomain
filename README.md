@@ -20,4 +20,8 @@
 ## 2018/11/29/Thu  
 1. VSCodeにPlantUMLプラグイン設定
 2. 自動生成されたUMLとUMLコードをGitへPush
+    <hr>
+## 2018/11/30/Fri  
+1. UML(サンプル用)追加、修正
+2. 自動生成されたUML画像をGitへ更新
 
