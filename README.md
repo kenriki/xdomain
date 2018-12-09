@@ -26,7 +26,9 @@
 2. 自動生成されたUML画像をGitへ更新
 
 <hr>
+
 [Slide Share My Page](https://www.slideshare.net/RikiKenmochi/presentations)  
+
 <hr>
 <br>
 
