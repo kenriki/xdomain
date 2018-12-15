@@ -42,6 +42,39 @@ input[type="file"] {
   width: 150px;
 }
 
+/*検索用*/
+.search-area input[type="text"] {
+  padding: 5px 5px 3px;
+  font-size: 16px;
+  border: 1px solid #D6D6D6;
+}
+
+.search-area input[type="text"]:focus {
+  background: #F9F9F9;
+}
+
+.search-result {
+  margin-top: 20px;
+}
+.hit-num__text span {
+  font-weight: bold;
+}
+#search-result__list {
+  margin-top: 15px;
+}
+#search-result__list span {
+  display: inline-block;
+  margin-right: 15px;
+  padding: 5px;
+  background: #F2F2F2;
+}
+.target-area {
+  margin-top: 50px;
+}
+.target-area .hidden {
+  display: none
+}
+
 </style>
 <link rel="stylesheet" type="text/css" href="style.css"/>
 <!-- Bootstrapを組み込むのに必要なファイル -->
@@ -90,6 +123,22 @@ function screen_disp(){
         </div>
     </div>
     <hr>
+    <div class="container">
+        <div class="row">
+            <div class="wrapper">
+                <div class="search-area">
+                  <br>
+                  <form>
+                    <input type="text" style="width:450px;" id="search-text" placeholder="検索ワードを入力">
+                  </form>
+                  <div class="search-result">
+                    <div class="search-result__hit-num"></div>
+                    <div id="search-result__list"></div>
+                  </div>
+                </div>
+              </div><!-- /.wrapper -->
+        </div>
+    </div>
     <hr>
     <div class="container-fluid">
         <div class="row">
@@ -183,5 +232,27 @@ function screen_disp(){
             fr.readAsDataURL(this.files[0]);
           });
         </script>
+        <script>
+              searchWord = function(){
+                var searchText = $(this).val(), // 検索ボックスに入力された値
+                    targetText;
+
+                $('.container-fluid').each(function() {
+                  targetText = $(this).text();
+
+                  // 検索対象となるリストに入力された文字列が存在するかどうかを判断
+                  if (targetText.indexOf(searchText) != -1) {
+                    $(this).removeClass('hidden');
+                  } else {
+                    $(this).addClass('hidden');
+                  }
+                });
+              };
+
+              // searchWordの実行
+              $('#search-text').on('input', searchWord);
+
+        </script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 </body>
 </html>
