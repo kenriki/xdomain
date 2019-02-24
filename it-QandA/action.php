@@ -5,7 +5,12 @@
  // 作成するファイル名の指定
   $file_name = 'data.html';
  if(isset($_POST['name']) || isset($_POST['chatTitle']) || isset($_POST['text1'])) {
-   if ($_POST["name"] == "" || $_POST["chatTitle"] == "" || $_POST["text1"] == ""){
+    
+   if(strlen($_POST['chatTitle'])>16){
+      '<script type="text/javascript">alert("文字数は15文字まで！");</script>';
+      exit;
+   }
+   if ($_POST["name"] == "" || $_POST["chatTitle"] == "" || $_POST["text1"] == "" || strlen($_POST['chatTitle'])<16 ){
       header('location: index.php');
       exit;
    }
