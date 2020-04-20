@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-135078110-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-135078110-2');
+</script>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minmum-scale=1.0,maximum-scale=1.0,user-scalable=no">
 <title>Q&A情報共有サイト</title>
 <meta charset="utf-8">
 <style>
@@ -39,7 +48,7 @@ input[type="file"] {
 }
 
 #preview img{
-  width: 150px;
+  width: 300px;
 }
 
 /*検索用*/
@@ -114,7 +123,6 @@ function screen_disp(){
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="../">ホーム</a></li>
-                    <li><a href="#" id="id-click" onclick="screen_disp();" title="入力フォームが開閉します">★ 入力フォーム開閉用</a></li>
                     <li><a href="http://www.google.com/" target="_blank">Google</a></li>
                     <li><a href="http://www.yahoo.com/" target="_blank">Yahoo</a></li>
                 </ul>
@@ -122,80 +130,105 @@ function screen_disp(){
             <!--/.nav-collapse -->
         </div>
     </div>
-    <hr>
-    <div class="container">
-        <div class="row">
-            <div class="wrapper">
-                <div class="search-area">
-                  <br>
-                  <form>
-                    <input type="text" style="width:450px;" id="search-text" placeholder="検索ワードを入力">
-                  </form>
-                  <div class="search-result">
-                    <div class="search-result__hit-num"></div>
-                    <div id="search-result__list"></div>
-                  </div>
-                </div>
-              </div><!-- /.wrapper -->
+    <div style="background-color:rgb(45,67,55);position:sticky;top:50px;z-index:1;width:100%;">
+        <div class="container">
+            <div class="row">
+                <div class="wrapper">
+                    <div class="search-area">
+                      <br>
+                      <form>
+                        <input type="text" style="width:250px;" id="search-text" placeholder="検索ワードを入力">
+                      </form>
+                      <div class="search-result">
+                        <div class="search-result__hit-num"></div>
+                        <div id="search-result__list"></div>
+                      </div>
+                    </div>
+                  </div><!-- /.wrapper -->
+            </div>
         </div>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">投稿フォーム</button>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal_2" data-whatever="@mdo">注意事項</button>
     </div>
-    <hr>
-    <div class="container-fluid">
+    
+    <!-- モーダル -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="exampleModalLabel">投稿フォーム</h4>
+          </div>
+          <div class="modal-body">
+              <div class="form-group">
+                <form action="action.php" method="post" data-toggle="validator" role="form" enctype="multipart/form-data">
+                  <span class="label label-danger">必須項目</span> 題名: 
+                  <div class="form-group has-feedback">
+                    <input type="text" class="control-label form-control" size="50" name="chatTitle" /><br>
+                  </div>
+                    URL: ( ※URLを入れることでリンク付きの題名となります。)
+                  <div class="form-group has-feedback">
+                    <input type="url" class="control-label form-control" size="50" name="ulrPage" /><br>
+                  </div>
+                  <span class="label label-danger">必須項目</span> 名前: 
+                  <div class="form-group has-feedback">
+                    <input type="text" class="form-control" name="name" /><br>
+                  </div>
+                  <span class="label label-danger">必須項目</span> 本文:
+                  <div class="form-group has-feedback">
+                     <textarea name="text1" class="control-label form-control" cols=50 rows=5 wrap="hard"></textarea>
+                 </div>
+                 <div class="modal-footer">
+                    <input type="button" class="btn btn-default" value="閉じる" data-dismiss="modal">
+                    <input type="submit" class="btn btn-primary" value="投稿する" name="add">
+                 </div>
+
+                  <div class="ui-block-a">
+                    <label class="ui-btn ui-corner-all" >
+                      <img class="ic" src="sp/img/camera.png" alt="" ><br>↑画像アップロード
+                      <input type="hidden" name="MAX_FILE_SIZE" value="10000000" />
+                      <!-- <input type="file" id="file" name="up_img" accept="image/*;capture=camera"> -->
+                      <input type="file" id="file" name="up_img" accept="image/*">
+                      <div id="preview"></div>
+                    </label>
+                  </div>
+
+                </form>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- モーダル２ -->
+    <div class="modal fade" id="exampleModal_2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="exampleModalLabel">★ 注意 ★</h4>
+          </div>
+          <div class="modal-body">
+              <div>(1) 注意事項</div>
+              <div>
+                <div>■ いたずら防止のため、投稿結果では、IPアドレスを記録しております。</div>
+                <div>■ 画像アップロードについて</div>
+                <div>※ jpegファイルで500×500以上の画像を用意してください。JPEG以外はエラーになります。※ファイルサイズは3MB以内でないとアップできない恐れがあります</div>
+                <div>※ android端末は、画像アップに失敗する可能性があります。その際は、アップ画像を気持ち少しだけ、トリミングしてください。</div>
+              </div>
+              <div>(2) 変更履歴</div>
+                <div>
+                <div>※ スマホ投稿では、画像選択の他に、カメラ起動後撮影して直ぐにアップできる機能を追加しました。</div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid" style="overflow:auto;height:100%;z-index:2">
         <div class="row">
             <div class="col-md-4 col-sm-6 col-xs-12">
-              <b>※ 入力フォームは、上部の黒メニューより、選択してください</b>
               <div class="container">
-                  <div id="id-txtBox" class="form-group">
-                      <form action="action.php" method="post" data-toggle="validator" role="form" enctype="multipart/form-data">
-                      <span class="label label-danger">必須項目</span> 題名: 
-                      <div class="form-group has-feedback">
-                        <input type="text" class="control-label form-control" size="50" name="chatTitle" /><br>
-                      </div>
-                        URL: ( ※URLを入れることでリンク付きの題名となります。)
-                      <div class="form-group has-feedback">
-                        <input type="url" class="control-label form-control" size="50" name="ulrPage" /><br>
-                      </div>
-                      <span class="label label-danger">必須項目</span> 名前: 
-                      <div class="form-group has-feedback">
-                        <input type="text" class="form-control" name="name" /><br>
-                      </div>
-                      <span class="label label-danger">必須項目</span> 本文:
-                      <div class="form-group has-feedback">
-                         <textarea name="text1" class="control-label form-control" cols=50 rows=5 wrap="hard"></textarea>
-                     </div>
-                      <div class="ui-block-a">
-                        <label class="ui-btn ui-corner-all" >
-                          <img class="ic" src="sp/img/camera.png" alt="" ><br>↑画像アップロード
-                          <input type="hidden" name="MAX_FILE_SIZE" value="10000000" />
-                          <!-- <input type="file" id="file" name="up_img" accept="image/*;capture=camera"> -->
-                          <input type="file" id="file" name="up_img" accept="image/*">
-                          <div id="preview">
-                          
-                          </div>
-                        </label>
-                      </div>
-                      <div class="alert alert-info alert-dismissible">
-                          <button type="button" class="close" data-dismiss="alert">
-                              <span>&times;</span>
-                          </button>
-                          <div>(1) 注意事項</div>
-                          <div>
-                            <div>■ いたずら防止のため、投稿結果では、IPアドレスを記録しております。</div>
-                            <div>■ 画像アップロードについて</div>
-                            <div>※ jpegファイルで500×500以上の画像を用意してください。JPEG以外はエラーになります。※ファイルサイズは3MB以内でないとアップできない恐れがあります</div>
-                            <div>※ android端末は、画像アップに失敗する可能性があります。その際は、アップ画像を気持ち少しだけ、トリミングしてください。</div>
-                          </div>
-                          <div>(2) 変更履歴</div>
-                            <div>
-                            <div>※ スマホ投稿では、画像選択の他に、カメラ起動後撮影して直ぐにアップできる機能を追加しました。</div>
-                          </div>
-                      </div>
-                      
-                      <div>
-                          <input type="submit" value="投稿する" class="btn btn-primary form-control usrBtn" name="add" class="css-btn" />
-                      </div>
-                      </form>
-                  </div>
+
                   <hr>
 
                   <?php

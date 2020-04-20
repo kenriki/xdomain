@@ -58,8 +58,8 @@
         $in = ImageCreateFromJPEG($file1); // 元画像ファイル読み込み
         $width = ImageSx($in); // 画像の幅を取得
         $height = ImageSy($in); // 画像の高さを取得
-        $min_width = 300; // 幅の最低サイズ
-        $min_height = 300; // 高さの最低サイズ
+        $min_width = 500; // 幅の最低サイズ
+        $min_height = 500; // 高さの最低サイズ
         $image_type = exif_imagetype($file1); // 画像タイプ判定用
 
         if ($image_type == IMAGETYPE_JPEG){ // JPGかどうか判定
@@ -120,7 +120,7 @@
        //str_replace('https://',
      //}
      $data = "<div class='container-fluid'><div class='row'>"
-     ."<div class='col-lg-12 col-md-12 col-sm-8 col-xs-14'>"
+     ."<div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>"
      ."<div class='alert alert-info alert-dismissible'>"
      ."<button type='button' class='close' data-dismiss='alert'>"
      ."<span>&times;</span></button>"

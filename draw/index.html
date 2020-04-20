@@ -1,39 +1,82 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-135078110-2"></script>
+  <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-135078110-2');
+  </script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
   <title>手書きパッド</title>
-  
+  <style>
+     html,body {
+        font-family:"游ゴシック","Yu Gothic","メイリオ","Meirio";
+     }
+
+     .style-btn-1 input[type="checkbox"]{
+        display: none;
+     }
+
+     .style-btn-1{
+       text-align: center;
+       margin-left: 350px;
+       margin-top: -150px;
+       width: 50px;
+       position:absolute;
+       background : rgb(200,200,200);
+       line-height : 2em;
+     }
+     #can{
+       background-image : url(bg003.png);
+       background-repeat: no-repeat;
+     }  
+     .style-form{
+        background : rgb(157,187,145);
+        padding : 10px;
+        height: 15rem;
+     }
+     .style-form > input[type="button"] {
+        width: 110px;
+        height: 100px;
+     }
+     .style-option-1{
+        box-shadow: 1px 3px 5px 1px;
+        border-radius: 15px;
+        font-size: 20px;
+     }
+  </style>
 </head>
-<body onload="mam_draw_init("#000000");">
+<body onload="app.init();">
 <div style="border:solid 1px #000000;width:400px;" id="candiv">
   <div id="target">
     <canvas id="can" width="400px" height="500px"></canvas>
     
   </div>
   </div>
-  <form name="form1">
-    <select name="colorValStyle" style="width:200px;height:20px;">
-      <option value="#000000">黒</option>
-      <option value="#FF0000">赤</option>
-      <option value="#0000FC">青</option>
-      <option value="#FFFF00">黄</option>
-      <option value="#228B22">緑</option>
-      <option value="#FF1493">桃</option>
-      <option value="#FFFFFF">白</option>
-    </select>
-    <input type="button" onClick="clearCan();" value="クリア" style="width:100;height:30;" data-inline="true" />
-<input type="button" onClick="app.init();" value="色確定" style="width:100;height:30;" data-inline="true" />
-
-  <br><br>
-  <div id="pcTaskId"></div>
-     
-
-
-
-      
+<input type="color" oninput="document.getElementById('output3').value=this.value;app.setColor=this.value;app.init();"> <output id="output3"></output>
+  <form class="style-form" name="form1">
+    <input type="button" onClick="clearCan();" value="全クリア" class="style-option-1" style="width:100;height:30;" data-inline="true" />
+    <input type="button"  class="style-option-1" onClick="app.init();" value="確定" style="width:100;height:30;" data-inline="true" />
+    <input type="button" class="style-option-1" onclick="download();" id="id_create"  value="画像作成↓">
+    <div>
+      <h2 style="float:left;">ペンの太さ</h2>
+      <input type="range" style="margin-top:30px" value="1" min="1" max="100" step="1" oninput="document.getElementById('output1').value=this.value;app.lineWid=this.value;"> <output id="output1">1</output>
+    </div>
+    <div style="margin-left:0px;position:absolute">
+      <h2 style="float:left;">透明度</h2>
+      <input type="range" style="margin-top:30px" value="0" min="0.01" max="1.0" step="0.01" oninput="document.getElementById('output2').value=this.value;app.globalAlpha=this.value;"> <output id="output2">1</output>
+    </div>
+    <br><br>
+    <div id="pcTaskId"></div>
   </form>
+  <img src="" id="result">
+
+  <a href="" id="img_result" style="display:none;" onclick="clickImgDownload();">ダウンロード</a>
   
   <script>
 
@@ -43,26 +86,32 @@
         x : "",
         y : "",
         mf : false,
+        lineWid: 5,
+        globalAlpha: 1,
         can : "",
         ct : "",
         setColor : "",
         init : function() {
             var self = this;
-            var color1 = document.form1.colorValStyle;
-            var num = color1.selectedIndex;
-            self.setColor = color1.options[num].value;
             mam_draw_init(false);
+        },
+        checkset : function(){
+           if(document.getElementById("id_chk1").checked == true){
+              imagesLook2();
+              document.getElementById("id_create").disabled = false;
+              document.getElementById("can").style.backgroundImage = "url("+conf.imgData+")";
+            }
         }
     };
     
     window.onload = function() {
-        alert("パレットから色を指定してください");
+        alert("パレットから色を指定してください。");
         
         if ((navigator.userAgent.indexOf('iPhone') > 0 && navigator.userAgent.indexOf('iPad') == -1) 
             || navigator.userAgent.indexOf('iPod') > 0 || navigator.userAgent.indexOf('Android') > 0) {
         }else{
         	// PC用
-                document.getElementById("pcTaskId").innerHTML = "<a href='./test.php'>PC向けはこちらへ</a>";
+                //document.getElementById("pcTaskId").innerHTML = "<a href='./test.php'>PC向けはこちらへ</a>";
         }
     
     };
@@ -78,7 +127,8 @@
         app.can.addEventListener("mouseup",onMouseUp,false);
         app.ct=can.getContext("2d");
         app.ct.strokeStyle=app.setColor;
-        app.ct.lineWidth=5;
+        app.ct.lineWidth=app.lineWid;
+        app.ct.globalAlpha=app.globalAlpha;
         app.ct.lineJoin="round";
         app.ct.lineCap="round";
         
@@ -156,6 +206,10 @@
 
         };
 
+        function clickImgDownload(){
+           alert("長押しでダウンロードを選択");
+        }
+
         function okEvent() {
           imagesLook();
         }
@@ -165,13 +219,30 @@
           html2canvas(document.getElementById("target"), {
             onrendered: function (canvas) {
               //imgタグのsrcの中に、html2canvasがレンダリングした画像を指定する。
-              app.imgData = canvas.toDataURL();
+              conf.imgData = canvas.toDataURL();
               document.getElementById("result").src = conf.imgData;
-              document.getElementById("ss").href = conf.imgData;
+
+
+document.getElementById("img_result").style.display = "block";
+              document.getElementById("img_result").href = conf.imgData;
+            }
+});
+}
+
+function imagesLook2() {
+          //HTML内に画像を表示
+          html2canvas(document.getElementById("target"), {
+            onrendered: function (canvas) {
+              //imgタグのsrcの中に、html2canvasがレンダリングした画像を指定する。
+              conf.imgData = canvas.toDataURL();
+              
+              
             }
           });
 
         }
+
+
       </script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
 </body>
